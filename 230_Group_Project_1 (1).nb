@@ -1,3 +1,6 @@
+git config --global user.name "Meagan Thatcher"
+git config --global user.email "meaganl3@byu.edu"
+
 (* Content-type: application/vnd.wolfram.mathematica *)
 
 (*** Wolfram Notebook File ***)
