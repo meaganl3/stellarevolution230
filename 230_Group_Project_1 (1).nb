@@ -1,3 +1,10 @@
+"TODO list"
+"Print statements with the results in each cell"
+"Label the HR Plots"
+"Type up explanation for HR Diagram"
+"Create If statments for non main sequence items"
+"Size -> End life"
+
 (* Content-type: application/vnd.wolfram.mathematica *)
 
 (*** Wolfram Notebook File ***)
