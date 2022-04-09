@@ -1,0 +1,425 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15663,        417]
+NotebookOptionsPosition[     14170,        388]
+NotebookOutlinePosition[     14636,        406]
+CellTagsIndexPosition[     14593,        403]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["HR Diagram code", "Text",
+ CellChangeTimes->{{3.857656111943246*^9, 
+  3.85765611774815*^9}},ExpressionUUID->"6642484d-0950-4856-abc6-\
+9afb80d5c2a3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"HR", " ", "diagram", " ", "code"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"starData", "=", 
+     RowBox[{
+     "SemanticImport", "[", 
+      "\"\<http://astrostatistics.psu.edu/datasets/HIP_star.dat\>\"", "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"HRdiagram", "=", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{"starData", "[", 
+        RowBox[{"All", ",", 
+         RowBox[{"{", 
+          RowBox[{"\"\<B-V\>\"", ",", "\"\<Vmag\>\""}], "}"}]}], "]"}], ",", 
+       RowBox[{"ScalingFunctions", "->", 
+        RowBox[{"{", 
+         RowBox[{"Identity", ",", "\"\<Reverse\>\""}], "}"}]}], ",", 
+       RowBox[{"PlotStyle", "->", "Bold"}], ",", 
+       RowBox[{"Frame", "->", "True"}], ",", 
+       RowBox[{"AspectRatio", "->", "1"}], ",", 
+       RowBox[{"FrameLabel", "->", 
+        RowBox[{"{", 
+         RowBox[{"\"\<B-V\>\"", ",", "\"\<v\>\""}], "}"}]}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"15", ",", "2"}], "}"}]}], "}"}]}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"star", "=", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "2"}], ",", "5"}], "}"}], ",", 
+       RowBox[{"PlotRange", "->", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "2"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"15", ",", "2"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", " ", "Red"}], ",", 
+       RowBox[{"Epilog", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"AbsolutePointSize", "[", "5", "]"}], ",", 
+          RowBox[{"Point", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "7.5"}], "}"}], "]"}]}], "}"}]}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"HRdiagram", ",", "star"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8576559461350155`*^9, 3.8576559483088555`*^9}, {
+  3.857656108805047*^9, 3.8576561453814125`*^9}, {3.857656192565868*^9, 
+  3.8576561950928755`*^9}, {3.8576562631897364`*^9, 3.8576562661653314`*^9}, {
+  3.857743779110672*^9, 3.8577437866907005`*^9}, {3.857832551531307*^9, 
+  3.857832687499443*^9}, {3.8578327264160404`*^9, 3.8578327337701635`*^9}, {
+  3.857832793087687*^9, 3.8578329261495743`*^9}, {3.8578329567412004`*^9, 
+  3.8578329888545356`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"6796eacb-b3bb-4a88-8220-aeb4428c2d18"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.857656233733926*^9, 
+  3.8576562564683914`*^9}},ExpressionUUID->"9ca0b4dc-2256-4258-a87e-\
+9a28ef0cb261"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"user", " ", "input", " ", "mass"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"userMass", "=", 
+     StyleBox[
+      RowBox[{
+      "Input", "[", 
+       "\"\<Enter a stellar mass between 0 and ?? (in solar masses). This \
+will determine the evolution of your model star.\>\"", "]"}],
+      FontWeight->"Bold"]}], 
+    StyleBox[";",
+     FontWeight->"Bold"]}], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Bold"], 
+   RowBox[{
+    StyleBox[
+     StyleBox[
+      RowBox[{"(", "*"}]],
+     FontWeight->"Bold"], 
+    RowBox[{
+     RowBox[{
+      StyleBox[
+       RowBox[{"if", " ", "less", " ", "than", " ", "0.08"}],
+       FontWeight->"Bold"], 
+      StyleBox[" ",
+       FontWeight->"Bold"], 
+      StyleBox["\[Rule]",
+       FontWeight->"Bold"], " ", 
+      RowBox[{
+       RowBox[{"failed", " ", 
+        RowBox[{"star", ".", " ", "If"}], " ", "0.08"}], "-", "8"}]}], ",", 
+     " ", 
+     RowBox[{"eventual", " ", "white", " ", 
+      RowBox[{"dwarf", ".", " ", "If"}], " ", "greater", " ", "than", " ", 
+      "8"}], ",", " ", 
+     RowBox[{"neutron", " ", "star", " ", "or", " ", "black", " ", 
+      RowBox[{"hole", "."}]}]}], "*)"}], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"userMass", " ", "<", " ", "0.08"}], ",", 
+      RowBox[{"Print", "[", "\"\<Not enough mass. Failed Star.\>\"", "]"}], 
+      ",", 
+      RowBox[{
+      "Print", "[", 
+       "\"\<You've made a star! Press shift enter on Main Sequence Cell.\>\"",
+        "]"}]}], "]"}],
+    FontWeight->"Bold"], 
+   StyleBox[" ",
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{"(*", 
+     RowBox[{
+     "add", " ", "something", " ", "to", " ", "tell", " ", "the", " ", "user",
+       " ", "what", " ", "spectral", " ", "type", " ", "this", " ", "star", 
+      " ", "would", " ", 
+      RowBox[{"be", "?"}]}], "*)"}],
+    FontWeight->"Bold"]}]}]], "Input",
+ CellChangeTimes->{{3.8577437975217752`*^9, 3.8577438026755233`*^9}, {
+  3.857744017262021*^9, 3.857744053368203*^9}, {3.857744087201495*^9, 
+  3.8577440978244963`*^9}, {3.8577441685814133`*^9, 3.857744188210612*^9}, {
+  3.8578319685630474`*^9, 3.857832037865971*^9}, {3.8578332790386553`*^9, 
+  3.857833300616251*^9}, {3.8578333425567565`*^9, 3.8578336124982443`*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"c7106e90-3e9a-47a3-ba6d-a68b237fed50"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"life", " ", "cycle", " ", "step", " ", "1"}], ",", " ", 
+    RowBox[{"main", " ", "sequence"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", "<", "8"}], ",", " ", 
+     RowBox[{"NebulaMain", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"userMass", ">", "8"}], " ", "&&", " ", 
+      RowBox[{"userMass", "<", "25"}]}], ",", " ", 
+     RowBox[{"NeutronStarMain", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", ">", "25"}], ",", " ", 
+     RowBox[{"BlackHoleMain", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8577438697588243`*^9, 3.8577438828190823`*^9}, {
+   3.8578321029313602`*^9, 3.857832104366538*^9}, {3.8578324055131607`*^9, 
+   3.857832413363462*^9}, 3.8578327547798204`*^9, {3.857833030933401*^9, 
+   3.857833066749323*^9}, 3.8578331562996416`*^9, {3.857833946469189*^9, 
+   3.85783405418108*^9}, 
+   3.8580006479726896`*^9},ExpressionUUID->"048b10ef-019c-45b0-a824-\
+d2ae1f5c9d04"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"life", " ", "cycle", " ", "step", " ", "2"}], ",", " ", 
+    RowBox[{"Red", " ", "Giant"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", "<", "8"}], ",", " ", 
+     RowBox[{"NebulaRG", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"userMass", ">", "8"}], " ", "&&", " ", 
+      RowBox[{"userMass", "<", "25"}]}], ",", " ", 
+     RowBox[{"NeutronStarRG", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", ">", "25"}], ",", " ", 
+     RowBox[{"BlackHoleRG", "[", "userMass", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8577438850616508`*^9, 3.857743890755233*^9}, {
+  3.8578324150802774`*^9, 3.857832427940669*^9}, {3.8578341296750765`*^9, 
+  3.857834144933217*^9}},ExpressionUUID->"0931d662-f301-4209-a24e-\
+bb870c2d66dd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"life", " ", "cycle", " ", "step", " ", "3"}], ",", " ", 
+    RowBox[{"Horizontal", " ", "branch"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", "<", "8"}], ",", " ", 
+     RowBox[{"NebulaHB", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"userMass", ">", "8"}], " ", "&&", " ", 
+      RowBox[{"userMass", "<", "25"}]}], ",", " ", 
+     RowBox[{"NeutronStarHB", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", ">", "25"}], ",", " ", 
+     RowBox[{"BlackHoleHB", "[", "userMass", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857743893027567*^9, 3.857743905644787*^9}, {
+  3.8578324299553633`*^9, 3.857832448233839*^9}, {3.857834150149786*^9, 
+  3.8578341623954315`*^9}},ExpressionUUID->"851f5fba-7c3a-4774-a3b2-\
+d83131c841bb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"life", " ", "cycle", " ", "step", " ", "4"}], ",", " ", 
+    RowBox[{"Asymptotic", " ", "giant", " ", "branch"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", "<", "8"}], ",", " ", 
+     RowBox[{"NebulaAGB", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"userMass", ">", "8"}], " ", "&&", " ", 
+      RowBox[{"userMass", "<", "25"}]}], ",", " ", 
+     RowBox[{"NeutronStarAGB", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", ">", "25"}], ",", " ", 
+     RowBox[{"BlackHoleAGB", "[", "userMass", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8577439078918343`*^9, 3.8577439137149677`*^9}, {
+  3.857832450444194*^9, 3.85783247238842*^9}, {3.857834164908041*^9, 
+  3.857834179930704*^9}},ExpressionUUID->"3a06626d-de9b-48b4-973d-\
+e0b5b617c457"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"final", " ", "stage"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", "<", "8"}], ",", " ", 
+     RowBox[{"Nebula", "[", "userMass", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"userMass", ">", "8"}], " ", "&&", " ", 
+      RowBox[{"userMass", "<", "25"}]}], ",", " ", 
+     RowBox[{"NeutronStar", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"If", " ", "[", 
+    RowBox[{
+     RowBox[{"userMass", ">", "25"}], ",", " ", 
+     RowBox[{"BlackHole", "[", "userMass", "]"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"8", "-", 
+      RowBox[{
+      "25", " ", "solar", " ", "mass", " ", "initially", " ", "will", " ", 
+       "be", " ", "neutron", " ", "star"}]}], ",", " ", 
+     RowBox[{"25", "+", " ", 
+      RowBox[{"is", " ", "black", " ", "hole"}]}]}], "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.857743919504057*^9, 3.8577439227899704`*^9}, {
+  3.8578338404482613`*^9, 3.857833873657304*^9}, {3.857834182370288*^9, 
+  3.857834192352395*^9}},ExpressionUUID->"c113aec8-a205-4d32-9d8e-\
+d7a25483c83b"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.857833836756669*^9, 
+  3.8578338379753847`*^9}},ExpressionUUID->"57cab932-b3e7-4eda-9317-\
+eef4a3f50f60"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"model", " ", "function"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"model", "[", "mass_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "peak\[Lambda]", ",", "temp", ",", "radius", ",", "msLifetime", ",", 
+        "luminosity"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"peak\[Lambda]", "=", 
+        RowBox[{
+         RowBox[{"(", ".002989", ")"}], "/", "temp"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"radius", "=", 
+        RowBox[{"mass", "^", 
+         RowBox[{"(", "0.8", ")"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"star", "=", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "2"}], ",", "5"}], "}"}], ",", 
+          RowBox[{"PlotRange", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "2"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"15", ",", "2"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"AspectRatio", "->", "1"}], ",", 
+          RowBox[{"Epilog", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"AbsolutePointSize", "[", "5", "]"}], ",", 
+             RowBox[{"Point", "[", 
+              RowBox[{"{", 
+               RowBox[{"temp", ",", "luminosity"}], "}"}], "]"}]}], "}"}]}]}],
+          "]"}]}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Main", "[", "3", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8579997879984574`*^9, 3.8579998396309385`*^9}, {
+  3.857999873067094*^9, 3.8580000499198217`*^9}, {3.8580002128427534`*^9, 
+  3.858000247804487*^9}, {3.8580005096341696`*^9, 3.858000548301454*^9}, {
+  3.8580005805346527`*^9, 3.858000581393903*^9}, {3.8580006161476994`*^9, 
+  3.858000680591215*^9}},
+ CellLabel->"In[71]:=",ExpressionUUID->"79d5f8be-b744-4973-bc64-2552ea955061"],
+
+Cell[BoxData["2.4082246852806923`"], "Output",
+ CellChangeTimes->{
+  3.8580002498443975`*^9, {3.8580005336233563`*^9, 3.858000549129244*^9}, 
+   3.8580006179253407`*^9, 3.8580006932462444`*^9},
+ CellLabel->"Out[72]=",ExpressionUUID->"52520c24-6169-4484-9110-1b537eebb379"]
+}, Open  ]]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+Magnification:>1. Inherited,
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a0fbcc8c-fae7-42e9-bcdc-809aac80d126"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 156, 3, 35, "Text",ExpressionUUID->"6642484d-0950-4856-abc6-9afb80d5c2a3"],
+Cell[717, 25, 2716, 69, 127, "Input",ExpressionUUID->"6796eacb-b3bb-4a88-8220-aeb4428c2d18"],
+Cell[3436, 96, 144, 3, 35, "Text",ExpressionUUID->"9ca0b4dc-2256-4258-a87e-9a28ef0cb261"],
+Cell[3583, 101, 2469, 68, 107, "Input",ExpressionUUID->"c7106e90-3e9a-47a3-ba6d-a68b237fed50"],
+Cell[6055, 171, 1238, 30, 107, "Input",ExpressionUUID->"048b10ef-019c-45b0-a824-d2ae1f5c9d04"],
+Cell[7296, 203, 1022, 26, 88, "Input",ExpressionUUID->"0931d662-f301-4209-a24e-bb870c2d66dd"],
+Cell[8321, 231, 1028, 26, 88, "Input",ExpressionUUID->"851f5fba-7c3a-4774-a3b2-d83131c841bb"],
+Cell[9352, 259, 1047, 27, 88, "Input",ExpressionUUID->"3a06626d-de9b-48b4-973d-e0b5b617c457"],
+Cell[10402, 288, 1249, 32, 127, "Input",ExpressionUUID->"c113aec8-a205-4d32-9d8e-d7a25483c83b"],
+Cell[11654, 322, 154, 3, 28, "Input",ExpressionUUID->"57cab932-b3e7-4eda-9317-eef4a3f50f60"],
+Cell[CellGroupData[{
+Cell[11833, 329, 2046, 50, 146, "Input",ExpressionUUID->"79d5f8be-b744-4973-bc64-2552ea955061"],
+Cell[13882, 381, 272, 4, 55, "Output",ExpressionUUID->"52520c24-6169-4484-9110-1b537eebb379"]
+}, Open  ]]
+}
+]
+*)
+
